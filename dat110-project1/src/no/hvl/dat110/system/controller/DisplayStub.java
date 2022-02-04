@@ -1,6 +1,5 @@
 package no.hvl.dat110.system.controller;
 
-import no.hvl.dat110.TODO;
 import no.hvl.dat110.rpc.*;
 
 public class DisplayStub extends RPCLocalStub {
@@ -16,9 +15,9 @@ public class DisplayStub extends RPCLocalStub {
 		// TODO - START
 		
 		// implement marshalling, call and unmarshalling for write RPC method
-		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
+		byte[] request = RPCUtils.marshallString(message);
+		byte[] reply = rpcclient.call(RPCIDDISPLAY,request);
+		RPCUtils.unmarshallVoid(reply);
 		
 		// TODO - END
 		

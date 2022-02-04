@@ -29,9 +29,8 @@ public class Controller  {
 		
 		// create local display and sensor stub objects
 		// connect to sensor and display RPC servers
-			
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
+		display = new DisplayStub(displayclient);
+		sensor = new SensorStub(sensorclient);
 		
 		// TODO - END
 		
