@@ -1,22 +1,20 @@
 package no.hvl.dat110.rpc;
 
 import java.nio.ByteBuffer;
-import java.util.Arrays;
-import no.hvl.dat110.TODO;
 
 public class RPCUtils {
 	
 	public static byte[] encapsulate(byte rpcid, byte[] payload) {
 		
-		byte[] rpcmsg = null;
+		byte[] rpcmsg = new byte[payload.length + 1];
 		
 		// TODO - START
 		
 		// Encapsulate the rpcid and payload in a byte array according to the  RPC message syntax
-		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-		
+		rpcmsg[0] = rpcid;
+		for (int i = 0; i < payload.length; i++) {
+			rpcmsg[i + 1] = payload[i];
+		}
 		// TODO - END
 		
 		return rpcmsg;
@@ -24,15 +22,13 @@ public class RPCUtils {
 	
 	public static byte[] decapsulate(byte[] rpcmsg) {
 		
-		byte[] payload = null;
+		byte[] payload = new byte[rpcmsg.length - 1];
 		
 		// TODO - START
-		
 		// Decapsulate the rpcid and payload in a byte array according to the  RPC message syntax
-		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-		
+		for(int i = 0; i < rpcmsg.length - 1; i++) {
+			payload[i] = rpcmsg[i+1]; 
+		}
 		// TODO - END
 		
 		return payload;
@@ -41,13 +37,12 @@ public class RPCUtils {
 	
 	public static byte[] marshallString(String str) {
 		
-		byte[] encoded = null;
+		byte[] encoded = new byte[str.getBytes().length];
 		
-		// TODO - START 
+		// TODO - START
 		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-		
+		encoded = str.getBytes();
+		System.out.println(new String(encoded));
 		// TODO - END
 		
 		return encoded;
@@ -58,10 +53,7 @@ public class RPCUtils {
 		String decoded = null; 
 		
 		// TODO - START 
-		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-		
+		decoded = new String(data);
 		// TODO - END
 		
 		return decoded;
@@ -69,26 +61,17 @@ public class RPCUtils {
 	
 	public static byte[] marshallVoid() {
 		
-		byte[] encoded = null;
-		
+		byte[] encoded = new byte[1];
 		// TODO - START 
-		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-				
 		// TODO - END
-		
 		return encoded;
-		
 	}
 	
 	public static void unmarshallVoid(byte[] data) {
 		
 		// TODO
 		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-		
+		//does nothing
 	}
 	
 	public static byte[] marshallBoolean(boolean b) {
@@ -113,13 +96,8 @@ public class RPCUtils {
 	
 	public static byte[] marshallInteger(int x) {
 		
-		byte[] encoded = null;
-		
 		// TODO - START 
-		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-		
+		byte [] encoded = ByteBuffer.allocate(4).putInt(x).array();
 		// TODO - END
 		
 		return encoded;
@@ -128,13 +106,8 @@ public class RPCUtils {
 	
 	public static int unmarshallInteger(byte[] data) {
 		
-		int decoded = 0;
-		
 		// TODO - START 
-		
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-		
+		int decoded = ByteBuffer.wrap(data).getInt(0);
 		// TODO - END
 		
 		return decoded;

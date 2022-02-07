@@ -7,17 +7,16 @@ public class Message {
 	private byte[] data;
 
 	public Message(byte[] data) {
-		
-		// TODO - START
-		
-		if (true)
-			throw new UnsupportedOperationException(TODO.constructor("Message"));
-			
-		// TODO - END
+
+		if (data.length <= 127) {
+			this.data = data;
+		} else {
+			throw new UnsupportedOperationException("data is null or more than 128 bytes");
+		}
 	}
 
 	public byte[] getData() {
-		return this.data; 
+		return this.data;
 	}
 
 }
