@@ -32,6 +32,8 @@ public class Controller  {
 		display = new DisplayStub(displayclient);
 		sensor = new SensorStub(sensorclient);
 		
+		displayclient.connect();
+		sensorclient.connect();
 		// TODO - END
 		
 		stopdisplay.stop();

@@ -55,7 +55,8 @@ public class Connection {
 		// TODO - START
 		// read a segment from the input stream and decapsulate into message
 		try {
-			message = MessageUtils.decapsulate(inStream.readNBytes(MessageConfig.SEGMENTSIZE));
+			byte[] rec = inStream.readNBytes(MessageConfig.SEGMENTSIZE);
+			message = MessageUtils.decapsulate(rec);
 			return message;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

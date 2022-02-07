@@ -46,11 +46,9 @@ public class RPCClient {
 		according to the RPC message format
 			
 		*/
-		connect();
 		byte[] rpcmsg = RPCUtils.encapsulate(rpcid, params);
 		connection.send(new Message(rpcmsg));
 		returnval = connection.receive().getData();
-		
 		// TODO - END
 		return returnval;
 		
